@@ -7,13 +7,15 @@ self.addEventListener('fetch', function (event) {
     // Bug fix
     // https://stackoverflow.com/a/49719964
     if (event.request.cache === 'only-if-cached' && event.request.mode !== 'same-origin') return;
-  
+
+    let contentType = request.destination;
+
     // HTML files
     // Network-first
-    if (request.headers.get('Accept').includes('text/html')) {
+    if (request.headers.get('Accept').includes('text/html') && request.destination.includes('iframe1.htm')) {
         event.respondWith(
-            fetch('iframe2.htm').then(function(response){
-              return new Response('<iframe src="iframe2.htm" height="500" width="1000" title="The iframe fetched"></iframe>',
+            fetch('/iframe2.htm').then(function(response){
+              return new Response('<iframe src="iframe2.htm" height="500" width="1000" title="'.concat(contentType).concat('"></iframe>'),
                   {headers:{'Content-Type': 'text/html'}});
             })
           );
