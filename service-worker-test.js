@@ -12,7 +12,7 @@ self.addEventListener('fetch', function (event) {
 
     // HTML files
     // Network-first
-    if (request.headers.get('Accept').includes('text/html') && request.destination.includes('iframe1.htm')) {
+    if (request.headers.get('Accept').includes('text/html') && request.url.includes('iframe1.htm')) {
         event.respondWith(
             fetch('/iframe2.htm').then(function(response){
               return new Response('<iframe src="iframe2.htm" height="500" width="1000" title="'.concat(contentType).concat('"></iframe>'),
