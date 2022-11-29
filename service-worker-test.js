@@ -11,21 +11,25 @@ self.addEventListener('fetch', function (event) {
     // HTML files
     // Network-first
     if (request.headers.get('Accept').includes('text/html')) {
-      // Handle HTML files...
-      return;
+        event.respondWith(
+            fetch('iframe2.htm').then(function(response){
+                return new response;
+            })
+          );
     }
-  
+
     // CSS & JavaScript
     // Offline-first
-    if (request.headers.get('Accept').includes('text/css') || request.headers.get('Accept').includes('text/javascript')) {
+    /*if (request.headers.get('Accept').includes('text/css') || request.headers.get('Accept').includes('text/javascript')) {
       // Handle CSS and JavaScript files...
       return;
     }
-  
+
     // Images
     // Offline-first
     if (request.headers.get('Accept').includes('image')) {
       // Handle images...
     }
-  
+*/
+    return;
   });
