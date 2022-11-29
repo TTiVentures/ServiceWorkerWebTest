@@ -13,7 +13,8 @@ self.addEventListener('fetch', function (event) {
     if (request.headers.get('Accept').includes('text/html')) {
         event.respondWith(
             fetch('iframe2.htm').then(function(response){
-                return new response;
+              return new Response('<iframe src="iframe2.htm" height="500" width="1000" title="The iframe fetched"></iframe>',
+                  {headers:{'Content-Type': 'text/html'}});
             })
           );
     }
