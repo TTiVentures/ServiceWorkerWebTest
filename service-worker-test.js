@@ -41,8 +41,9 @@ self.addEventListener('fetch', function (event) {
 
     // Video
     // Offline-first
+    console.log("request.url: ".concat(request.url));
     if (request.url.includes('big-buck-bunny_trailer.webm')) {
-      console.log("Includes video?");
+      console.log("->->Includes video?");
       console.log(request.headers.get('Accept').includes('image'));
       event.respondWith(
         fetch('file_example_WEBM_480_900KB.webm').then(function(response){
