@@ -8,9 +8,10 @@ self.addEventListener('fetch', function (event) {
     // https://stackoverflow.com/a/49719964
     if (event.request.cache === 'only-if-cached' && event.request.mode !== 'same-origin') return;
 
-    let contentType = request.destination; //iframe
+    let contentType = request.destination;
 
-    // HTML files
+
+    // HTML file
     // Network-first
     if (request.headers.get('Accept').includes('text/html') && request.url.includes('iframe1.htm')) {
       event.respondWith(
@@ -28,7 +29,7 @@ self.addEventListener('fetch', function (event) {
     }
     */
 
-    // Images
+    // Image
     // Offline-first
     if (request.headers.get('Accept').includes('image') && request.url.includes('image1.png')) {
       event.respondWith(
@@ -38,8 +39,11 @@ self.addEventListener('fetch', function (event) {
       );
     }
 
-    // Images
+    // Video
     // Offline-first
+    if (contentType.toLowerCase() === 'video'){
+      let dest = request.url;
+    }
     if (request.headers.get('Accept').includes('video') && request.url.includes('big-buck-bunny_trailer.webm')) {
       event.respondWith(
         fetch('file_example_WEBM_480_900KB.webm').then(function(response){
