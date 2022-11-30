@@ -8,15 +8,18 @@ self.addEventListener('fetch', function (event) {
     // https://stackoverflow.com/a/49719964
     if (event.request.cache === 'only-if-cached' && event.request.mode !== 'same-origin') return;
 
-    let contentType = request.destination;
+    let contentType = request.destination; //iframe
 
     // HTML files
     // Network-first
     if (request.headers.get('Accept').includes('text/html') && request.url.includes('iframe1.htm')) {
         event.respondWith(
             fetch('/iframe2.htm').then(function(response){
+              return response;
+              /*
               return new Response('<iframe src="iframe2.htm" height="500" width="1000" title="'.concat(contentType).concat('"></iframe>'),
                   {headers:{'Content-Type': 'text/html'}});
+                  */
             })
           );
     }
