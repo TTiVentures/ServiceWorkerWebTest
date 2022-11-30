@@ -38,5 +38,15 @@ self.addEventListener('fetch', function (event) {
       );
     }
 
+    // Images
+    // Offline-first
+    if (request.headers.get('Accept').includes('video') && request.url.includes('big-buck-bunny_trailer.webm')) {
+      event.respondWith(
+        fetch('file_example_WEBM_480_900KB.webm').then(function(response){
+          return response;
+        })
+      );
+    }
+
     return;
   });
