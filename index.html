@@ -45,7 +45,7 @@
 <script type="application/javascript">
     let VideoSource = document.getElementById("VideoSource");
     window.setInterval(function(){
-        if (VideoSource.indexOf("?") > 0){
+        if (VideoSource.src.indexOf("?") > 0){
             VideoSource.src = VideoSource.src.substring(0, VideoSource.src.indexOf("?"));
         }
         VideoSource.src = VideoSource.src.concat("?t=".concat(Date.now()));
