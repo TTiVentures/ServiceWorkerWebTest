@@ -13,15 +13,11 @@ self.addEventListener('fetch', function (event) {
     // HTML files
     // Network-first
     if (request.headers.get('Accept').includes('text/html') && request.url.includes('iframe1.htm')) {
-        event.respondWith(
-            fetch('iframe2.htm').then(function(response){
-              return response;
-              /*
-              return new Response('<iframe src="iframe2.htm" height="500" width="1000" title="'.concat(contentType).concat('"></iframe>'),
-                  {headers:{'Content-Type': 'text/html'}});
-                  */
-            })
-          );
+      event.respondWith(
+          fetch('iframe2.htm').then(function(response){
+            return response;
+          })
+        );
     }
 
     // CSS & JavaScript
@@ -30,12 +26,17 @@ self.addEventListener('fetch', function (event) {
       // Handle CSS and JavaScript files...
       return;
     }
+    */
 
     // Images
     // Offline-first
-    if (request.headers.get('Accept').includes('image')) {
-      // Handle images...
+    if (request.headers.get('Accept').includes('image') && request.url.includes('image1.png')) {
+      event.respondWith(
+        fetch('image2.png').then(function(response){
+          return response;
+        })
+      );
     }
-*/
+
     return;
   });
