@@ -9,7 +9,6 @@ self.addEventListener('fetch', function (event) {
     if (event.request.cache === 'only-if-cached' && event.request.mode !== 'same-origin') return;
 
     let contentType = request.destination;
-    console.log(request.url);
 
 
     // HTML file
@@ -42,11 +41,9 @@ self.addEventListener('fetch', function (event) {
 
     // Video
     // Offline-first
-    if (contentType.toLowerCase() === 'video'){
-      let dest = request.url;
-    }
-
-    if (request.headers.get('Accept').includes('video') && request.url.includes('big-buck-bunny_trailer.webm')) {
+    if (request.url.includes('big-buck-bunny_trailer.webm')) {
+      console.log("Includes video?");
+      console.log(request.headers.get('Accept').includes('image'));
       event.respondWith(
         fetch('file_example_WEBM_480_900KB.webm').then(function(response){
           return response;
