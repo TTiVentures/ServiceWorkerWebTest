@@ -31,7 +31,7 @@
 
         <h2>Fetching a video:</h2>
         <video controls autoplay loop muted>
-            <source src="big-buck-bunny_trailer.webm" type="video/webm">
+            <source src="big-buck-bunny_trailer.webm" type="video/webm" id="VideoSource">
             Your browser does not support the video tag.
         </video>
         <p>If you are seeing the Big Buck Bunny trailer video (from <a href="https://wiki.yoctoproject.org/wiki/File:Big-buck-bunny_trailer.webm">wiki.yoctoproject.org</a>), then the onfetch function was not called and the service worker has not fetched the call.</p>
@@ -43,6 +43,13 @@
 </html>
 
 <script type="application/javascript">
+    let VideoSource = document.getElementById("VideoSource");
+    window.setInterval(function(){
+        if (VideoSource.indexOf("?") > 0){
+            VideoSource.src = VideoSource.src.substring(0, VideoSource.src.indexOf("?"));
+        }
+        VideoSource.src = VideoSource.src.concat("?t=".concat(Date.now()));
+    }, 1000);
 
     window.addEventListener('load', () => {
         if (('serviceWorker' in navigator) && navigator && navigator.serviceWorker) {
