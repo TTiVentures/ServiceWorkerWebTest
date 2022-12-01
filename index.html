@@ -61,7 +61,7 @@
     window.addEventListener('load', () => {
         let video2 = document.getElementById("video2");
         let videoSource2 = document.getElementById("VideoSource2");
-        videoSource2.src = "big-buck-bunny_trailer.webm";
+        videoSource2.src = "big-buck-bunny_trailer.webm?t=".concat(Date.now());
         video2.load();
         video2.play();
 
