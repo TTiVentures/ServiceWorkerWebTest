@@ -30,40 +30,26 @@
         <br>
 
         <h2>Fetching a video:</h2>
-        <!--<video controls autoplay loop muted preload="none">
-            <source src="big-buck-bunny_trailer.webm" type="video/webm" id="VideoSource">
+        <video controls loop muted preload="none" id="videoTag">
+            <source src="" type="video/webm" id="VideoSource">
             Your browser does not support the video tag.
-        </video>-->
+        </video>
         <p>If you are seeing the Big Buck Bunny trailer video (from <a href="https://wiki.yoctoproject.org/wiki/File:Big-buck-bunny_trailer.webm">wiki.yoctoproject.org</a>), then the onfetch function was not called and the service worker has not fetched the call.</p>
         <p>If you are seeing NASA-Imagery video (from <a href="https://file-examples.com/index.php/sample-video-files/sample-webm-files-download/">Pixabay</a>), then the service worker has fetched the call and changed the video.</p>
         <hr>
         <br>
-        <video controls loop muted preload="none" id="video2">
-            <source src="" type="video/webm" id="VideoSource2">
-            Your browser does not support the video tag.
-        </video>
     </main>
   </body>
 </html>
 
 <script type="application/javascript">
 
-    /*
-    let VideoSource = document.getElementById("VideoSource");
-    window.setInterval(function(){
-        if (VideoSource.src.indexOf("?") > 0){
-            VideoSource.src = VideoSource.src.substring(0, VideoSource.src.indexOf("?"));
-        }
-        VideoSource.src = VideoSource.src.concat("?t=".concat(Date.now()));
-    }, 1000);
-    */
-
     window.addEventListener('load', () => {
-        let video2 = document.getElementById("video2");
-        let videoSource2 = document.getElementById("VideoSource2");
-        videoSource2.src = "big-buck-bunny_trailer.webm?t=".concat(Date.now());
-        video2.load();
-        video2.play();
+        let videoTag = document.getElementById("videoTag");
+        let videoSource = document.getElementById("VideoSource");
+        videoSource.src = "big-buck-bunny_trailer.webm?t=".concat(Date.now());
+        videoTag.load();
+        videoTag.play();
 
 
         if (('serviceWorker' in navigator) && navigator && navigator.serviceWorker) {
@@ -77,12 +63,4 @@
             )
         }
     });
-
-
-
-    /*
-    if (navigator && navigator.serviceWorker) {
-        navigator.serviceWorker.register('service-worker-test.js');
-    }
-      */
 </script>
