@@ -43,9 +43,18 @@ self.addEventListener('fetch', function (event) {
     // Offline-first
     if (request.url.includes('big-buck-bunny_trailer.webm')) {
       event.respondWith(
+        fetch(new Request('file_example_WEBM_480_900KB.webm', {
+          headers: {
+            "ServiceWorkerTestHeader": "true",
+            "Authorization": "Authorization test"
+          },
+          mode: "cors"
+        }))
+        /*
         fetch('file_example_WEBM_480_900KB.webm').then(function(response){
           return response;
         })
+        */
       );
     }
 
