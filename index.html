@@ -38,18 +38,25 @@
         <p>If you are seeing NASA-Imagery video (from <a href="https://file-examples.com/index.php/sample-video-files/sample-webm-files-download/">Pixabay</a>), then the service worker has fetched the call and changed the video.</p>
         <hr>
         <br>
+        <video controls loop muted preload="none">
+            <source src="" type="video/webm" id="VideoSource2">
+            Your browser does not support the video tag.
+        </video>
     </main>
   </body>
 </html>
 
 <script type="application/javascript">
     let VideoSource = document.getElementById("VideoSource");
+
+    /*
     window.setInterval(function(){
         if (VideoSource.src.indexOf("?") > 0){
             VideoSource.src = VideoSource.src.substring(0, VideoSource.src.indexOf("?"));
         }
         VideoSource.src = VideoSource.src.concat("?t=".concat(Date.now()));
     }, 1000);
+    */
 
     window.addEventListener('load', () => {
         if (('serviceWorker' in navigator) && navigator && navigator.serviceWorker) {
