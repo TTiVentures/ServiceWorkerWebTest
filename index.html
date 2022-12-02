@@ -30,14 +30,12 @@
         <br>
 
         <h2>Fetching a video:</h2>
-        <!-- <video id="videoTag" controls loop muted width="100%" playsinline poster="" preload><!-- preload="none" --><!--
+        <video id="videoTag" controls loop muted width="100%" playsinline poster="" preload><!-- preload="none" -->
             <source src="" type="video/webm" id="VideoSource">
             Your browser does not support the video tag.
         </video>
         <p>If you are seeing the Big Buck Bunny trailer video (from <a href="https://wiki.yoctoproject.org/wiki/File:Big-buck-bunny_trailer.webm">wiki.yoctoproject.org</a>), then the onfetch function was not called and the service worker has not fetched the call.</p>
         <p>If you are seeing NASA-Imagery video (from <a href="https://file-examples.com/index.php/sample-video-files/sample-webm-files-download/">Pixabay</a>), then the service worker has fetched the call and changed the video.</p>
-        -->
-        <a href="video.html">Go to video</a>
         <hr>
         <br>
     </main>
@@ -47,13 +45,12 @@
 <script type="application/javascript">
 
     window.addEventListener('load', () => {
-        /*
         let videoTag = document.getElementById("videoTag");
         let videoSource = document.getElementById("VideoSource");
         videoSource.src = "big-buck-bunny_trailer.webm?t=".concat(Date.now());
         videoTag.load();
         videoTag.play();
-        */
+
 
 
         if (('serviceWorker' in navigator) && navigator && navigator.serviceWorker) {
